@@ -6,7 +6,7 @@ import Autocomplete from "@mui/material/Autocomplete"
 
 type OptionValue = {
     label: string
-    action: () => void
+    action: any
 } | null
 
 function App() {
@@ -39,7 +39,9 @@ function App() {
                     return textA < textB ? -1 : textA > textB ? 1 : 0
                 })}
                 autoComplete={true}
-                renderInput={(params) => <TextField {...params} autoFocus={true} placeholder="Enter a command" />}
+                renderInput={(params) => {
+                    return <TextField {...params} autoFocus={true} placeholder="Enter a command" />
+                }}
             />
         </div>
     )
