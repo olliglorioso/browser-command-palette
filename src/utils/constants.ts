@@ -6,4 +6,11 @@ export const urls = {
     Youtube: "https://www.youtube.com/",
     Facebook: "https://www.facebook.com/",
     Wikipedia: "https://www.wikipedia.org/",
+    Twitter: "https://www.twitter.com/",
+    Reddit: "https://www.reddit.com/",
+    Amazon: "https://www.amazon.com/",
+    iCloud: "https://www.icloud.com/",
+    Instagram: "https://www.instagram.com/",
+    Apple: "https://www.apple.com/",
+    Weather: "https://www.weather.com",
 }
