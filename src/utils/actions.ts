@@ -27,17 +27,17 @@ export const closeAllWindows = async () => {
     }
 }
 
-export const navigateTo = async (url?: string) => {
-    // const tab = await getCurrentTab()
-    chrome.tabs.update({ url })
+export const navigateTo = async (_url?: string) => {
+    const tab = await getCurrentTab()
+    await chrome.tabs.update(tab.id as number, { url: _url })
 }
 
 export const muteTab = async () => {
     const tab = await getCurrentTab()
-    chrome.tabs.update(tab.id as number, { muted: true })
+    await chrome.tabs.update(tab.id as number, { muted: true })
 }
 
 export const unmuteTab = async () => {
     const tab = await getCurrentTab()
-    chrome.tabs.update(tab.id as number, { muted: false })
+    await chrome.tabs.update(tab.id as number, { muted: false })
 }

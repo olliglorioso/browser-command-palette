@@ -3,21 +3,15 @@ import "../styles/App.css"
 import { options } from "../utils/options"
 import TextField from "@mui/material/TextField"
 import Autocomplete from "@mui/material/Autocomplete"
-
-type OptionValue = {
-    label: string
-    action: any
-} | null
+import { OptionValue } from "../utils/types"
 
 function App() {
     const onChange = (_event: SyntheticEvent, value: OptionValue) => {
         try {
-            value?.action()
-            window.close()
+            value?.action(), window.close()
             return
         } catch (e) {
-            console.log(e)
-            window.close()
+            console.log(e), window.close()
             return
         }
     }
