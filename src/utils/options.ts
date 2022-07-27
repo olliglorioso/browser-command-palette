@@ -1,14 +1,13 @@
-import { bingSearch, copyUrl, duckDuckGoSearch, googleSearch, newTab, newWindow, scrollToTop, yahooSearch } from "./actions"
+import { bingSearch, duckDuckGoSearch, googleSearch, newTab, newWindow, reload, yahooSearch } from "./actions"
 
 // Options for command palette in alphabetical order
 export const options = [
-    { label: "Google search", action: googleSearch },
-    { label: "DuckDuckGo search", action: duckDuckGoSearch },
-    { label: "Bing search", action: bingSearch },
-    { label: "Yahoo search", action: yahooSearch },
-    { label: "New tab", action: newTab },
-    { label: "New window", action: newWindow },
+    { label: "Open: Google", action: googleSearch },
+    { label: "Open: DuckDuckGo", action: duckDuckGoSearch },
+    { label: "Open: Bing", action: bingSearch },
+    { label: "Open: Yahoo", action: yahooSearch },
+    { label: "Open: Empty Tab", action: newTab },
+    { label: "Open: Empty Window", action: newWindow },
     { label: "Search bar", action: () => console.log("No actions yet") },
-    { label: "Copy url", action: copyUrl },
-    { label: "Copy location", action: copyUrl },
+    { label: "Reload Extension", action: reload },
 ]

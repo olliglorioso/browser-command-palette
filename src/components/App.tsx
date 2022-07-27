@@ -1,10 +1,27 @@
-import React from "react"
+import React, { SyntheticEvent } from "react"
 import "../styles/App.css"
 import { options } from "../utils/options"
 import TextField from "@mui/material/TextField"
 import Autocomplete from "@mui/material/Autocomplete"
 
+type OptionValue = {
+    label: string
+    action: () => void
+} | null
+
 function App() {
+    const onChange = (_event: SyntheticEvent, value: OptionValue) => {
+        try {
+            value?.action()
+            window.close()
+            return
+        } catch (e) {
+            console.log(e)
+            window.close()
+            return
+        }
+    }
+
     return (
         <div className="App">
             <Autocomplete
@@ -12,13 +29,7 @@ function App() {
                 popupIcon={false}
                 autoHighlight={true}
                 limitTags={10}
-                onChange={(_event, value) => {
-                    try {
-                        value?.action()
-                    } catch (e) {
-                        console.log(e)
-                    }
-                }}
+                onChange={onChange}
                 ListboxProps={{ style: { minHeight: "300px", maxHeight: "300px" } }}
                 noOptionsText="No commands found"
                 open
