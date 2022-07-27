@@ -1,5 +1,5 @@
 {
-    "name": "Chrome Command Palette",
+    "name": "Browser Command Palette",
     "description": "Powerful command palette for making the use of your browser as efficient as possible.",
     "version": "1.0",
     "manifest_version": 3,
@@ -12,9 +12,7 @@
         "48": "logo192.png",
         "128": "logo192.png"
     },
-    "permissions": [
-        "activeTab"
-    ],
+    "permissions": ["activeTab", "tabs"],
     "content_scripts": [
         {
             "matches": ["http://*/*", "https://*/*"],

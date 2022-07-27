@@ -28,7 +28,7 @@ function App() {
                 disablePortal
                 popupIcon={false}
                 autoHighlight={true}
-                limitTags={10}
+                limitTags={7}
                 onChange={onChange}
                 ListboxProps={{ style: { minHeight: "300px", maxHeight: "300px" } }}
                 noOptionsText="No commands found"

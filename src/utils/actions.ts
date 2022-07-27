@@ -1,3 +1,6 @@
+import { getAllWindows, getCurrentTab } from "./utils"
+
+/* global chrome */
 export const newTab = () => {
     window.open("https://www.google.com/", "_blank")
 }
@@ -22,6 +25,19 @@ export const newWindow = () => {
     window.open("https://www.google.com/", "_blank", "location=yes,height=570,width=520,scrollbars=yes,status=yes")
 }
 
-export const reload = () => {
-    location.reload()
+export const reloadTab = async () => {
+    const currentTab = await getCurrentTab()
+    chrome.tabs.reload(currentTab.id as number)
+}
+
+export const closeTab = async () => {
+    const currentTab = await getCurrentTab()
+    chrome.tabs.remove(currentTab.id as number)
+}
+
+export const closeAllWindows = async () => {
+    const windows = await getAllWindows()
+    for (let i = 0; i < windows.length; i++) {
+        chrome.windows.remove(windows[i].id as number)
+    }
 }

@@ -1,4 +1,4 @@
-import { bingSearch, duckDuckGoSearch, googleSearch, newTab, newWindow, reload, yahooSearch } from "./actions"
+import { bingSearch, closeAllWindows, closeTab, duckDuckGoSearch, googleSearch, newTab, newWindow, reloadTab, yahooSearch } from "./actions"
 
 // Options for command palette in alphabetical order
 export const options = [
@@ -8,6 +8,7 @@ export const options = [
     { label: "Open: Yahoo", action: yahooSearch },
     { label: "Open: Empty Tab", action: newTab },
     { label: "Open: Empty Window", action: newWindow },
-    { label: "Search bar", action: () => console.log("No actions yet") },
-    { label: "Reload Extension", action: reload },
+    { label: "Close: Current Tab", action: closeTab },
+    { label: "Close: All Windows", action: closeAllWindows },
+    { label: "Reload: Page", action: reloadTab },
 ]

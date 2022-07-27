@@ -1,21 +1,21 @@
 module.exports = {
     webpack: {
-        configure: (webpackConfig, {env, paths}) => {
+        configure: (webpackConfig, { env, paths }) => {
             return {
                 ...webpackConfig,
                 entry: {
-                    main: [env === 'development' && require.resolve('react-dev-utils/webpackHotDevClient'),paths.appIndexJs].filter(Boolean),
-                    content: './src/chromeServices/DOMEvaluator.ts',
+                    main: [env === "development" && require.resolve("react-dev-utils/webpackHotDevClient"), paths.appIndexJs].filter(Boolean),
+                    content: "./src/chromeServices/DOMEvaluator.ts",
                 },
                 output: {
                     ...webpackConfig.output,
-                    filename: 'static/js/[name].js',
+                    filename: "static/js/[name].js",
                 },
                 optimization: {
                     ...webpackConfig.optimization,
                     runtimeChunk: false,
-                }
+                },
             }
         },
-    }
- }
+    },
+}
