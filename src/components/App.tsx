@@ -14,7 +14,8 @@ function App() {
         try {
             const canContinue = await stateChangeHandler(value?.label || "", setText)
             if (canContinue) {
-                value?.action, window.close()
+                console.log(value?.action)
+                value?.action(), window.close()
                 return
             }
         } catch (e) {
