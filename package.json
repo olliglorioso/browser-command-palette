@@ -1,6 +1,6 @@
 {
     "name": "chrome-command-palette",
-    "version": "0.1.0",
+    "version": "0.0.1",
     "dependencies": {
         "@craco/craco": "^7.0.0-alpha.3",
         "@emotion/react": "^11.9.3",

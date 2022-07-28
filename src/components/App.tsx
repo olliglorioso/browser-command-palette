@@ -4,6 +4,7 @@ import { options } from "../utils/options"
 import TextField from "@mui/material/TextField"
 import Autocomplete from "@mui/material/Autocomplete"
 import { OptionValue } from "../utils/types"
+import { createFilterOptions } from "@mui/material/Autocomplete"
 
 function App() {
     const onChange = (_event: SyntheticEvent, value: OptionValue) => {
@@ -16,6 +17,13 @@ function App() {
         }
     }
 
+    const filterOptions = createFilterOptions({
+        ignoreAccents: true,
+        ignoreCase: true,
+        trim: true,
+        stringify: (option: OptionValue): string => `${option?.label} ${option?.keywords?.join(" ")}` || "",
+    })
+
     return (
         <div className="App">
             <Autocomplete
@@ -24,6 +32,7 @@ function App() {
                 autoHighlight={true}
                 limitTags={7}
                 onChange={onChange}
+                filterOptions={filterOptions}
                 ListboxProps={{ style: { minHeight: "300px", maxHeight: "300px" } }}
                 noOptionsText="No commands found"
                 open

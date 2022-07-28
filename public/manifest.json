@@ -1,11 +1,11 @@
 {
     "name": "Browser Command Palette",
-    "description": "Powerful command palette for making the use of your browser as efficient as possible.",
-    "version": "1.0",
+    "description": "Powerful command palette for efficient browsing.",
+    "version": "0.0.1",
     "manifest_version": 3,
     "action": {
         "default_popup": "index.html",
-        "default_title": "Open command palette"
+        "default_title": "Open command palette."
     },
     "icons": {
         "16": "logo192.png",
