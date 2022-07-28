@@ -31,7 +31,18 @@ export const options = [
         keywords: ["open new window", "empty", "empty window", "new empty window"],
         action: newWindow,
     },
-
+    {
+        label: "Info: Number of CPUs",
+        keywords: ["cpu_amount", "get number of cpus", "get number of processors", "processors", "cpu amount", "processor amount"],
+    },
+    {
+        label: "Info: Display Name",
+        keywords: ["info display name", "screen name", "namm", "display's", "displays'"],
+    },
+    {
+        label: "Info: Is This Primary Display",
+        keywords: ["info is this primary display", "primarry", "primay", "dipslay"],
+    },
     {
         label: "Close: Current Tab",
         keywords: ["close current tab", "turn off"],

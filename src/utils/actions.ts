@@ -41,3 +41,21 @@ export const unmuteTab = async () => {
     const tab = await getCurrentTab()
     await chrome.tabs.update(tab.id as number, { muted: false })
 }
+
+export const getCpuAmount = async (): Promise<number> => {
+    const cpuInfo = await chrome.system.cpu.getInfo()
+    const numOfProcessors = cpuInfo.numOfProcessors
+    return numOfProcessors
+}
+
+export const getDisplayName = async (): Promise<string> => {
+    const displayInfo = await chrome.system.display.getInfo()
+    const name = displayInfo.length > 1 ? displayInfo.map((dis) => dis.name).join(", ") : displayInfo[0].name
+    return name
+}
+
+export const getPrimaryDisplayInfo = async (): Promise<boolean> => {
+    const displayInfo = await chrome.system.display.getInfo()
+    const isIt = displayInfo[0].isPrimary
+    return isIt
+}

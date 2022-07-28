@@ -1,18 +1,24 @@
-import React, { SyntheticEvent } from "react"
+import React, { SyntheticEvent, useState } from "react"
 import "../styles/App.css"
 import { options } from "../utils/options"
 import TextField from "@mui/material/TextField"
 import Autocomplete from "@mui/material/Autocomplete"
 import { OptionValue } from "../utils/types"
 import { createFilterOptions } from "@mui/material/Autocomplete"
+import { stateChangeHandler } from "../utils/utils"
 
 function App() {
-    const onChange = (_event: SyntheticEvent, value: OptionValue) => {
+    const [text, setText] = useState("")
+
+    const onChange = async (_event: SyntheticEvent, value: OptionValue) => {
         try {
-            value?.action(), window.close()
-            return
+            const canContinue = await stateChangeHandler(value?.label || "", setText)
+            if (canContinue) {
+                value?.action, window.close()
+                return
+            }
         } catch (e) {
-            console.log(e), window.close()
+            window.close()
             return
         }
     }
@@ -32,6 +38,7 @@ function App() {
                 autoHighlight={true}
                 limitTags={7}
                 onChange={onChange}
+                inputValue={text}
                 filterOptions={filterOptions}
                 ListboxProps={{ style: { minHeight: "300px", maxHeight: "300px" } }}
                 noOptionsText="No commands found"
@@ -43,7 +50,7 @@ function App() {
                 })}
                 autoComplete={true}
                 renderInput={(params) => {
-                    return <TextField {...params} autoFocus={true} placeholder="Enter a command" />
+                    return <TextField {...params} value={text} onChange={(e) => setText(e.target.value)} autoFocus={true} placeholder="Enter a command" />
                 }}
             />
         </div>

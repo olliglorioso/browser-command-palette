@@ -1,5 +1,5 @@
 export type OptionValue = {
     label: string
-    action: any
+    action?: any
     keywords?: Array<string>
 } | null
