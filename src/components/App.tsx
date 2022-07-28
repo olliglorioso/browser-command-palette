@@ -11,10 +11,10 @@ function App() {
     const [text, setText] = useState("")
 
     const onChange = async (_event: SyntheticEvent, value: OptionValue) => {
+        if (value?.label === "" || !value?.label) return
         try {
             const canContinue = await stateChangeHandler(value?.label || "", setText)
             if (canContinue) {
-                console.log(value?.action)
                 value?.action(), window.close()
                 return
             }
@@ -50,9 +50,7 @@ function App() {
                     return textA < textB ? -1 : textA > textB ? 1 : 0
                 })}
                 autoComplete={true}
-                renderInput={(params) => {
-                    return <TextField {...params} value={text} onChange={(e) => setText(e.target.value)} autoFocus={true} placeholder="Enter a command" />
-                }}
+                renderInput={(params) => <TextField {...params} value={text} onChange={(e) => setText(e.target.value)} autoFocus={true} placeholder="Enter a command" />}
             />
         </div>
     )
