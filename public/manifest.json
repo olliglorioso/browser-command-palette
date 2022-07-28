@@ -12,7 +12,7 @@
         "48": "logo192.png",
         "128": "logo192.png"
     },
-    "permissions": ["activeTab", "tabs", "system.display", "system.storage", "system.cpu"],
+    "permissions": ["activeTab", "tabs", "search", "system.display", "system.storage", "system.cpu"],
     "content_scripts": [
         {
             "matches": ["http://*/*", "https://*/*"],

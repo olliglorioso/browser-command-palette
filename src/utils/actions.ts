@@ -59,3 +59,10 @@ export const getPrimaryDisplayInfo = async (): Promise<boolean> => {
     const isIt = displayInfo[0].isPrimary
     return isIt
 }
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+export const search = async (text: string): Promise<void> => {
+    chrome.search.query({ text }, () => {
+        return
+    })
+}

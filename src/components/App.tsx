@@ -6,6 +6,7 @@ import Autocomplete from "@mui/material/Autocomplete"
 import { OptionValue } from "../utils/types"
 import { createFilterOptions } from "@mui/material/Autocomplete"
 import { stateChangeHandler } from "../utils/utils"
+import { search } from "../utils/actions"
 
 function App() {
     const [text, setText] = useState("")
@@ -31,27 +32,43 @@ function App() {
         stringify: (option: OptionValue): string => `${option?.label} ${option?.keywords?.join(" ")}` || "",
     })
 
+    const searchSubmit = async () => {
+        await search(text.substring(1)), window.close()
+        return
+    }
+
     return (
         <div className="App">
-            <Autocomplete
-                disablePortal
-                popupIcon={false}
-                autoHighlight={true}
-                limitTags={7}
-                onChange={onChange}
-                inputValue={text}
-                filterOptions={filterOptions}
-                ListboxProps={{ style: { minHeight: "300px", maxHeight: "300px" } }}
-                noOptionsText="No commands found"
-                open
-                options={options.sort((a, b) => {
-                    const textA = a.label.toLowerCase()
-                    const textB = b.label.toLowerCase()
-                    return textA < textB ? -1 : textA > textB ? 1 : 0
-                })}
-                autoComplete={true}
-                renderInput={(params) => <TextField {...params} value={text} onChange={(e) => setText(e.target.value)} autoFocus={true} placeholder="Enter a command" />}
-            />
+            {!text.includes(">") || !text.includes(".") ? (
+                <>
+                    <Autocomplete
+                        disablePortal
+                        popupIcon={false}
+                        autoHighlight={true}
+                        limitTags={7}
+                        onChange={onChange}
+                        inputValue={text}
+                        filterOptions={filterOptions}
+                        ListboxProps={{ style: { minHeight: "300px", maxHeight: "300px" } }}
+                        noOptionsText="No commands found"
+                        open
+                        options={options.sort((a, b) => {
+                            const textA = a.label.toLowerCase()
+                            const textB = b.label.toLowerCase()
+                            return textA < textB ? -1 : textA > textB ? 1 : 0
+                        })}
+                        autoComplete={true}
+                        renderInput={(params) => <TextField {...params} value={text} onChange={(e) => setText(e.target.value)} autoFocus={true} placeholder="Enter a command, or search by typing >searchword or .searchword" />}
+                    />
+                </>
+            ) : (
+                <>
+                    <form onSubmit={searchSubmit}>
+                        <button type="submit"></button>
+                        <TextField name="search" onChange={(e) => setText(e.target.value)} autoFocus={true} value={text} />
+                    </form>
+                </>
+            )}
         </div>
     )
 }
