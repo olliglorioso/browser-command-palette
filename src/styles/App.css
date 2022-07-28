@@ -2,14 +2,8 @@
   text-align: center;
 }
 
-.MuiAutocomplete-root {
-  width: 600px;
-  outline: white;
-}
-
 .MuiTextField-root {
-  width: 600px;
-  outline: white;
+  background-color: #FAFFFD;
 }
 
 button {

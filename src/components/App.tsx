@@ -39,17 +39,18 @@ function App() {
 
     return (
         <div className="App">
-            {!text.includes(">") || !text.includes(".") ? (
+            {!text.includes(">") && !text.includes(".") ? (
                 <>
                     <Autocomplete
                         disablePortal
+                        className="Autocomplete"
                         popupIcon={false}
                         autoHighlight={true}
                         limitTags={7}
                         onChange={onChange}
                         inputValue={text}
+                        size="small"
                         filterOptions={filterOptions}
-                        ListboxProps={{ style: { minHeight: "300px", maxHeight: "300px" } }}
                         noOptionsText="No commands found"
                         open
                         options={options.sort((a, b) => {
@@ -58,7 +59,7 @@ function App() {
                             return textA < textB ? -1 : textA > textB ? 1 : 0
                         })}
                         autoComplete={true}
-                        renderInput={(params) => <TextField {...params} value={text} onChange={(e) => setText(e.target.value)} autoFocus={true} placeholder="Enter a command, or search by typing >searchword or .searchword" />}
+                        renderInput={(params) => <TextField className="TextField" {...params} value={text} onChange={(e) => setText(e.target.value)} autoFocus={true} placeholder="Enter a command, or search by typing >searchword or .searchword" />}
                     />
                 </>
             ) : (
