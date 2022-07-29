@@ -1,6 +1,7 @@
 {
     "name": "Browser Command Palette",
     "description": "Powerful command palette for efficient browsing.",
+    "short_name": "BCP",
     "version": "0.0.1",
     "manifest_version": 3,
     "action": {
