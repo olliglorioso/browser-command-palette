@@ -46,8 +46,10 @@ function App() {
         return
     }
 
-    const backgroundColor = mode === "dark" ? "#121212" : "#fff"
-    const textColor = mode === "dark" ? "#fff" : "rgba(0, 0, 0, 0.87)"
+    const dark = "#282828",
+        light = "#fff",
+        backgroundColor = mode === "dark" ? dark : light,
+        textColor = mode === "dark" ? light : dark
 
     const textFieldStyle: CSSProperties = {
         fontFamily: "georgia",
@@ -57,6 +59,7 @@ function App() {
         width: 600,
         color: textColor,
         backgroundColor,
+        marginBottom: 0,
     }
 
     const menuItemStyle: CSSProperties = {
@@ -64,11 +67,14 @@ function App() {
         fontSize: textFieldStyle.fontSize,
         backgroundColor,
         color: textColor,
+        marginTop: 0,
+        zIndex: 2,
         height: 30,
     }
 
     const paperComponentStyle: CSSProperties = {
         backgroundColor,
+        zIndex: 1,
     }
 
     const placeholder = "Enter a command, or search by typing > or ."
@@ -81,6 +87,7 @@ function App() {
                         className="Autocomplete"
                         popupIcon={false}
                         autoHighlight={true}
+                        openOnFocus
                         limitTags={7}
                         onChange={onChange}
                         inputValue={text}
@@ -96,11 +103,11 @@ function App() {
                             return textA < textB ? -1 : textA > textB ? 1 : 0
                         })}
                         autoComplete={true}
-                        PaperComponent={(params) => <Paper {...params} style={paperComponentStyle} />}
+                        PaperComponent={(params) => <Paper {...params} sx={paperComponentStyle} variant="elevation" />}
                         renderOption={(params, option) => {
                             return (
                                 <>
-                                    <MenuItem {...params} className="option" style={menuItemStyle}>
+                                    <MenuItem {...params} sx={menuItemStyle} className="option">
                                         {option?.label}
                                     </MenuItem>
                                 </>
