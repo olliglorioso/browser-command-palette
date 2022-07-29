@@ -11,7 +11,7 @@ const openWebsites = Object.entries(urls).map(([key, value]) => {
 
 const navigateToWebsites = Object.entries(urls).map(([key, value]) => {
     return {
-        label: `Navigate To: ${key}`,
+        label: `Go To: ${key}`,
         keywords: [`navigate to ${key}`, `go to ${key}`, `goto ${key}`, `${key} navigate to `, `${key} go to`, `${key} goto`],
         action: navigateTo.bind(this, value),
     }

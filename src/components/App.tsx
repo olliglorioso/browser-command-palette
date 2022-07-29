@@ -1,4 +1,4 @@
-import React, { SyntheticEvent, useState } from "react"
+import React, { CSSProperties, SyntheticEvent, useState } from "react"
 import "../styles/App.css"
 import { options } from "../utils/options"
 import TextField from "@mui/material/TextField"
@@ -7,6 +7,7 @@ import { OptionValue } from "../utils/types"
 import { createFilterOptions } from "@mui/material/Autocomplete"
 import { stateChangeHandler } from "../utils/utils"
 import { search } from "../utils/actions"
+import { MenuItem } from "@mui/material"
 
 function App() {
     const [text, setText] = useState("")
@@ -37,6 +38,20 @@ function App() {
         return
     }
 
+    const textFieldStyle: CSSProperties = {
+        fontFamily: "georgia",
+        paddingLeft: 16,
+        border: "1px solid black",
+        fontSize: 15,
+    }
+
+    const menuItemStyle: CSSProperties = {
+        fontFamily: textFieldStyle.fontFamily,
+        fontSize: textFieldStyle.fontSize,
+        height: 30,
+    }
+
+    const placeholder = "Enter a command, or search by typing >olliglorioso or .olliglorioso."
     return (
         <div className="App">
             {!text.includes(">") && !text.includes(".") ? (
@@ -52,21 +67,60 @@ function App() {
                         size="small"
                         filterOptions={filterOptions}
                         noOptionsText="No commands found"
+                        ListboxProps={{ style: { minHeight: "300px", maxHeight: "300px" } }}
                         open
                         options={options.sort((a, b) => {
-                            const textA = a.label.toLowerCase()
-                            const textB = b.label.toLowerCase()
+                            const textA = a.label.toLowerCase(),
+                                textB = b.label.toLowerCase()
                             return textA < textB ? -1 : textA > textB ? 1 : 0
                         })}
                         autoComplete={true}
-                        renderInput={(params) => <TextField className="TextField" {...params} value={text} onChange={(e) => setText(e.target.value)} autoFocus={true} placeholder="Enter a command, or search by typing >searchword or .searchword" />}
+                        renderOption={(params, option, state) => {
+                            console.log(params, option, state)
+                            return (
+                                <MenuItem {...params} style={menuItemStyle}>
+                                    {option?.label}
+                                </MenuItem>
+                            )
+                        }}
+                        renderInput={(params) => {
+                            return (
+                                <TextField
+                                    variant="standard"
+                                    {...params}
+                                    InputProps={{
+                                        ...params.InputProps,
+                                        style: textFieldStyle,
+                                        disableUnderline: true,
+                                    }}
+                                    className="TextField"
+                                    value={text}
+                                    onChange={(e) => setText(e.target.value)}
+                                    autoFocus={true}
+                                    placeholder={placeholder}
+                                />
+                            )
+                        }}
                     />
                 </>
             ) : (
                 <>
-                    <form onSubmit={searchSubmit}>
+                    <form onSubmit={searchSubmit} autoComplete="off">
                         <button type="submit"></button>
-                        <TextField name="search" onChange={(e) => setText(e.target.value)} autoFocus={true} value={text} />
+                        <TextField
+                            className="TextField"
+                            name="search"
+                            variant="standard"
+                            InputProps={{
+                                style: textFieldStyle,
+                                disableUnderline: true,
+                            }}
+                            size="small"
+                            onChange={(e) => setText(e.target.value)}
+                            autoFocus={true}
+                            value={text}
+                        />
+                        <MenuItem style={menuItemStyle}>Search: {text.substring(1)}</MenuItem>
                     </form>
                 </>
             )}

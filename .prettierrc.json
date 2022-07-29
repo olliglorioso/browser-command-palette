@@ -5,6 +5,5 @@
     "printWidth": 500,
     "bracketSpacing": true,
     "bracketSameLine": false,
-    "arrowParens": "always",
-    "endOfLine": "lf"
+    "arrowParens": "always"
 }
