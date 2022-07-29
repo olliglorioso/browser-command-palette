@@ -6,7 +6,7 @@
 
 ## About
 
-Chrome extension, which gives you a powerful command palette, like in VSCode! Open it with <kbd>Ctrl/MacCtrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or change to your own hotkey at [chrome://extensions/shortcuts](chrome://extensions/shortcuts). Has many different commands and you can do a search with your default engine by writing > or . as the first letter. Scroll to the end to see the full list of commands.
+Chrome extension, which gives you a powerful command palette, like in VSCode! Open it with <kbd>Ctrl/MacCtrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd>, or change to your own hotkey at chrome://extensions/shortcuts. Has many different commands and you can do a search with your default engine by writing > or . as the first letter. Scroll to the end to see the full list of commands.
 
 ## Bug reports / enhancements / feature requests
 
@@ -42,6 +42,7 @@ first run ```npm run build``` and upload the generated build-folder to [chrome:/
 | Open: {website}*     | Opens {website}* in a new tab.                                                 |
 | Update: Dark Mode    | Changes the extension theme to dark mode. Visible on light mode.               |
 | Update: Light Mode   | Changes the extension theme to light mode. Visible on dark mode.               |
+| Update: Reload Page  | Refresh current tab.                                                           |
 | Info: Display Name   | Lists (separated by comma) all the user-friendly names of the displays in use. |
 | Info: Number Of CPUs | Number of CPUs/processors in the computer.                                     |
 | . or >               | Start a search: >searchword or .searchword                                     |
