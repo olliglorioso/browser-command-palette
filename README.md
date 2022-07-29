@@ -46,4 +46,4 @@ first run ```npm run build``` and upload the generated build-folder to [chrome:/
 | Info: Number Of CPUs | Number of CPUs/processors in the computer.                                     |
 | . or >               | Start a search: >searchword or .searchword                                     |
 
-*available websites are some popular websites listed in `src/utils/constants`.
+*available websites are some popular websites listed in [`src/utils/constants`](https://github.com/olliglorioso/browser-command-palette/blob/master/src/utils/constants.ts).
