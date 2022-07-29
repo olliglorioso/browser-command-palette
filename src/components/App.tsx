@@ -46,6 +46,15 @@ function App() {
         return
     }
 
+    const getOptionLabel = (option: OptionValue) => {
+        if (!option) return ""
+        if (option.label.includes("Update: Extension Dark Mode")) {
+            if (mode === "dark") return "Update: Light Mode"
+            return "Update: Dark Mode"
+        }
+        return option.label
+    }
+
     const dark = "#282828",
         light = "#fff",
         backgroundColor = mode === "dark" ? dark : light,
@@ -86,13 +95,14 @@ function App() {
                         disablePortal
                         className="Autocomplete"
                         popupIcon={false}
-                        autoHighlight={true}
+                        autoHighlight
                         openOnFocus
                         limitTags={7}
                         onChange={onChange}
                         inputValue={text}
                         size="small"
                         color={backgroundColor}
+                        getOptionLabel={getOptionLabel}
                         filterOptions={filterOptions}
                         noOptionsText="No commands found"
                         ListboxProps={{ style: { minHeight: "300px", maxHeight: "300px" } }}
@@ -108,7 +118,7 @@ function App() {
                             return (
                                 <>
                                     <MenuItem {...params} sx={menuItemStyle} className="option">
-                                        {option?.label}
+                                        {getOptionLabel(option)}
                                     </MenuItem>
                                 </>
                             )
