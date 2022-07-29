@@ -8,9 +8,17 @@
         "default_title": "Open command palette."
     },
     "icons": {
-        "16": "logo192.png",
-        "48": "logo192.png",
-        "128": "logo192.png"
+        "16": "logo1616.png",
+        "48": "logo4848.png",
+        "128": "logo128128.png"
+    },
+    "commands": {
+        "_execute_action": {
+            "suggested_key": {
+                "default": "Ctrl+Shift+P",
+                "mac": "MacCtrl+Shift+F"
+            }
+        }
     },
     "permissions": ["activeTab", "tabs", "search", "system.display", "system.storage", "system.cpu"],
     "content_scripts": [
