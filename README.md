@@ -1,8 +1,8 @@
 # browser-command-palette
 
-## Download here: [coming_soon](www.google.com)
+## Download
 
----
+[https://www.comingsoon.com](https://www.google.com)
 
 ## About
 
@@ -27,7 +27,7 @@ The more commands, the better extension. This is why your help is needed with cr
 7. Wait for approval & comments & suggestions.
 8. Once approved, merge to the main-branch.
 
-Development environment setup: ```npm install``` and ```npm start``` and go to http://localhost:3000.
+Development environment setup: ```npm install``` and ```npm start``` and go to <http://localhost:3000>.
 
 To try the extension in production-like environment,
 first run ```npm run build``` and upload the generated build-folder to [chrome://extensions](chrome://extensions/shortcuts) as an unpacked file.
