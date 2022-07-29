@@ -7,10 +7,6 @@
   outline: white;
 }
 
-.MuiTextField-root {
-  width: 600px;
-}
-
 button {
   position: absolute;
   width: 0;

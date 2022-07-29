@@ -4,7 +4,7 @@ import { urls } from "./constants"
 const openWebsites = Object.entries(urls).map(([key, value]) => {
     return {
         label: `Open: ${key}`,
-        keywords: [`open ${key}`, `new ${key}`, `new tab ${key}`, `${key} open`],
+        keywords: [`open ${key}`, `${key} open`],
         action: newTab.bind(this, value),
     }
 })
@@ -25,6 +25,11 @@ export const options = [
         label: "Open: New Tab",
         keywords: ["open new tab", "empty", "empty tab", "new empty tab"],
         action: newTab.bind(this, urls.Google),
+    },
+    {
+        label: "Update: Extension Dark Mode",
+        keywords: ["update extension dark mode", "dark mode", "dark mode extension", "light mode", "update extension light mode", "lght", "drk", "drka", "darka", "litgh", "ligth"],
+        action: () => null,
     },
     {
         label: "Open: New Window",
