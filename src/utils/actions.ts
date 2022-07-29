@@ -42,22 +42,16 @@ export const unmuteTab = async () => {
     await chrome.tabs.update(tab.id as number, { muted: false })
 }
 
-export const getCpuAmount = async (): Promise<number> => {
+export const getCpuAmount = async (): Promise<string> => {
     const cpuInfo = await chrome.system.cpu.getInfo()
     const numOfProcessors = cpuInfo.numOfProcessors
-    return numOfProcessors
+    return numOfProcessors.toString()
 }
 
 export const getDisplayName = async (): Promise<string> => {
     const displayInfo = await chrome.system.display.getInfo()
     const name = displayInfo.length > 1 ? displayInfo.map((dis) => dis.name).join(", ") : displayInfo[0].name
     return name
-}
-
-export const getPrimaryDisplayInfo = async (): Promise<boolean> => {
-    const displayInfo = await chrome.system.display.getInfo()
-    const isIt = displayInfo[0].isPrimary
-    return isIt
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

@@ -1,5 +1,5 @@
 import { Dispatch, SetStateAction } from "react"
-import { getCpuAmount, getDisplayName, getPrimaryDisplayInfo } from "./actions"
+import { getCpuAmount, getDisplayName } from "./actions"
 
 export const getCurrentTab = async (): Promise<chrome.tabs.Tab> => {
     const queryOptions = { active: true, lastFocusedWindow: true }
@@ -18,15 +18,11 @@ export const stateChangeHandler = async (label: string, setText: Dispatch<SetSta
     if (!label) return true
     if (label.includes("Info: Number of CPUs")) {
         const processorAmount = await getCpuAmount()
-        setText(processorAmount.toString())
+        setText(processorAmount)
         return false
     } else if (label.includes("Info: Display Name")) {
         const displayName = await getDisplayName()
         setText(displayName)
-        return false
-    } else if (label.includes("Info: Is This Primary Display")) {
-        const isIt = await getPrimaryDisplayInfo()
-        setText(isIt === true ? "Yes" : "No")
         return false
     }
     return true

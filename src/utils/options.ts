@@ -45,10 +45,6 @@ export const options = [
         keywords: ["info display name", "screen name", "namm", "display's", "displays'"],
     },
     {
-        label: "Info: Is This Primary Display",
-        keywords: ["info is this primary display", "primarry", "primay", "dipslay"],
-    },
-    {
         label: "Close: Current Tab",
         keywords: ["close current tab", "turn off"],
         action: closeTab,
