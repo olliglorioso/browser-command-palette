@@ -12,7 +12,7 @@ const openWebsites = Object.entries(urls).map(([key, value]) => {
 const navigateToWebsites = Object.entries(urls).map(([key, value]) => {
     return {
         label: `Go To: ${key}`,
-        keywords: [`navigate to ${key}`, `go to ${key}`, `goto ${key}`, `${key} navigate to `, `${key} go to`, `${key} goto`],
+        keywords: [`navigate to ${key}`, `go to ${key}`, `goto ${key}`, `goto${key}`, `${key} navigate to `, `${key} go to`, `${key} goto`, `navigateto ${key}`],
         action: navigateTo.bind(this, value),
     }
 })
@@ -51,12 +51,12 @@ export const options = [
     },
     {
         label: "Close: All Windows",
-        keywords: ["close all windows", "turn off", "close all windows", "allwindows", "allwins", "closeallwindows", "closeallwinds"],
+        keywords: ["close all windows", "turn off", "close all windows", "allwindows", "allwins", "closeallwindows", "closeallwinds", "closewindows", "close window", "close windows", "windowclose", "close chrome", "close google chrome", "closegooglechrome", "close google", "close browser", "closebrowser", "stop browser", "stop chrome", "stopchrome", "stopgooglechrome"],
         action: closeAllWindows,
     },
     {
         label: "Update: Reload Page",
-        keywords: ["reload page", "refresh", "refresh page", "re fresh", "re", "realoadpage", "refreshpage"],
+        keywords: ["reload page", "refresh", "refresh page", "re fresh", "re", "realoadpage", "refreshpage", "pagereload", "pagerefresh", "paage"],
         action: reloadTab,
     },
     // The following are not working, but would be great to make them working.
