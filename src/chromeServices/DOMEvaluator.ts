@@ -1,11 +1,13 @@
+import { DOMMessage, DOMMessageResponse } from "../utils/types"
+
 // Function called when a new message is received
-const messagesFromReactAppListener = (msg: any, sender: chrome.runtime.MessageSender, sendResponse: (response: any) => void) => {
+const messagesFromReactAppListener = (msg: DOMMessage, sender: chrome.runtime.MessageSender, sendResponse: (response: DOMMessageResponse) => void) => {
     console.log("[content.js]. Message received", msg)
 
     const headlines = Array.from(document.getElementsByTagName<"h1">("h1")).map((h1) => h1.innerText)
 
     // Prepare the response object with information about the site
-    const response: any = {
+    const response: DOMMessageResponse = {
         title: document.title,
         headlines,
     }
