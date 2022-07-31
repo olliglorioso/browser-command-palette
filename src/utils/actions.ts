@@ -20,6 +20,16 @@ export const closeTab = async () => {
     chrome.tabs.remove(tab.id as number)
 }
 
+export const goBack = async () => {
+    const tab = await getCurrentTab()
+    chrome.tabs.goBack(tab.id as number)
+}
+
+export const goForward = async () => {
+    const tab = await getCurrentTab()
+    chrome.tabs.goForward(tab.id as number)
+}
+
 export const closeAllWindows = async () => {
     const windows = await getAllWindows()
     for (let i = 0; i < windows.length; i++) {
@@ -30,16 +40,6 @@ export const closeAllWindows = async () => {
 export const navigateTo = async (_url?: string) => {
     const tab = await getCurrentTab()
     await chrome.tabs.update(tab.id as number, { url: _url })
-}
-
-export const muteTab = async () => {
-    const tab = await getCurrentTab()
-    await chrome.tabs.update(tab.id as number, { muted: true })
-}
-
-export const unmuteTab = async () => {
-    const tab = await getCurrentTab()
-    await chrome.tabs.update(tab.id as number, { muted: false })
 }
 
 export const getCpuAmount = async (): Promise<string> => {
@@ -60,3 +60,14 @@ export const search = async (text: string): Promise<void> => {
         return
     })
 }
+
+// The following don't work.
+// export const muteTab = async () => {
+//     const tab = await getCurrentTab()
+//     await chrome.tabs.update(tab.id as number, { muted: true })
+// }
+
+// export const unmuteTab = async () => {
+//     const tab = await getCurrentTab()
+//     await chrome.tabs.update(tab.id as number, { muted: false })
+// }

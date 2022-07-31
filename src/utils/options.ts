@@ -1,4 +1,4 @@
-import { closeAllWindows, closeTab, navigateTo, newTab, newWindow, reloadTab } from "./actions"
+import { closeAllWindows, closeTab, goBack, goForward, navigateTo, newTab, newWindow, reloadTab } from "./actions"
 import { urls } from "./constants"
 
 const openWebsites = Object.entries(urls).map(([key, value]) => {
@@ -23,17 +23,17 @@ export const options = [
     ...navigateToWebsites,
     {
         label: "Open: New Tab",
-        keywords: ["open new tab", "empty", "empty tab", "new empty tab", "newtab", "emptytab", "newemptytab"],
+        keywords: ["empty", "empty tab", "new empty tab", "newtab", "emptytab", "newemptytab"],
         action: newTab.bind(this, urls.Google),
     },
     {
         label: "Update: Extension Dark Mode",
-        keywords: ["update extension dark mode", "dark mode", "dark mode extension", "light mode", "update extension light mode", "lght", "drk", "drka", "darka", "litgh", "ligth", "darkmode", "lightmode", "modes"],
+        keywords: ["dark mode", "dark mode extension", "light mode", "update extension light mode", "lght", "drk", "drka", "darka", "litgh", "ligth", "darkmode", "lightmode", "modes"],
         action: () => null,
     },
     {
         label: "Open: New Window",
-        keywords: ["open new window", "empty", "empty window", "new empty window", "newwindow", "emptywindow", "newemptywindow", "windows"],
+        keywords: ["empty", "empty window", "new empty window", "newwindow", "emptywindow", "newemptywindow", "windows"],
         action: newWindow,
     },
     {
@@ -42,22 +42,32 @@ export const options = [
     },
     {
         label: "Info: Display Name",
-        keywords: ["info display name", "screen name", "namm", "display's", "displays'", "displayname", "infodisplayname"],
+        keywords: ["screen name", "namm", "display's", "displays'", "displayname"],
     },
     {
         label: "Close: Current Tab",
-        keywords: ["close current tab", "turn off", "currenttab", "thistab", "this tab", "closecurrenttab", "closethistab"],
+        keywords: ["turn off", "currenttab", "thistab", "this tab", "closecurrenttab", "closethistab"],
         action: closeTab,
     },
     {
         label: "Close: All Windows",
-        keywords: ["close all windows", "turn off", "close all windows", "allwindows", "allwins", "closeallwindows", "closeallwinds", "closewindows", "close window", "close windows", "windowclose", "close chrome", "close google chrome", "closegooglechrome", "close google", "close browser", "closebrowser", "stop browser", "stop chrome", "stopchrome", "stopgooglechrome"],
+        keywords: ["turn off", "close all windows", "allwindows", "allwins", "closeallwindows", "closeallwinds", "closewindows", "close window", "close windows", "windowclose", "close chrome", "close google chrome", "closegooglechrome", "close google", "close browser", "closebrowser", "stop browser", "stop chrome", "stopchrome", "stopgooglechrome"],
         action: closeAllWindows,
     },
     {
         label: "Update: Reload Page",
-        keywords: ["reload page", "refresh", "refresh page", "re fresh", "re", "realoadpage", "refreshpage", "pagereload", "pagerefresh", "paage"],
+        keywords: ["refresh", "refresh page", "re fresh", "re", "realoadpage", "refreshpage", "pagereload", "pagerefresh", "paage"],
         action: reloadTab,
+    },
+    {
+        label: "Update: Go Back",
+        keywords: ["updategoback", "goback", "recent page", "recentpage", "last page", "lastpage"],
+        action: goBack,
+    },
+    {
+        label: "Update: Go Forward",
+        keywords: ["forwward", "nextpage", "next page", "nexti", "seuraava", "goto", "following page"],
+        action: goForward,
     },
     // The following are not working, but would be great to make them working.
     // { label: "Update: Mute Tab", action: muteTab },

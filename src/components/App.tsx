@@ -38,7 +38,7 @@ function App() {
         ignoreAccents: true,
         ignoreCase: true,
         trim: true,
-        stringify: (option: OptionValue): string => `${option?.label} ${option?.keywords?.join(" ")}` || "",
+        stringify: (option: OptionValue): string => `${option?.label} ${option?.label.replace(" ", "")} ${option?.label.replace(":", "")} ${option?.keywords?.join(" ")}` || "",
     })
 
     const searchSubmit = async () => {
