@@ -38,8 +38,7 @@ export const closeAllWindows = async () => {
 }
 
 export const navigateTo = async (_url?: string) => {
-    const tab = await getCurrentTab()
-    await chrome.tabs.update(tab.id as number, { url: _url })
+    await chrome.tabs.update({ url: _url })
 }
 
 export const getCpuAmount = async (): Promise<string> => {
@@ -52,6 +51,12 @@ export const getDisplayName = async (): Promise<string> => {
     const displayInfo = await chrome.system.display.getInfo()
     const name = displayInfo.length > 1 ? displayInfo.map((dis) => dis.name).join(", ") : displayInfo[0].name
     return name
+}
+
+export const setZoom = async (factor?: string) => {
+    let f = 0
+    if (factor) f = parseFloat(factor)
+    chrome.tabs.setZoom(f)
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

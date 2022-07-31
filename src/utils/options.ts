@@ -1,4 +1,4 @@
-import { closeAllWindows, closeTab, goBack, goForward, navigateTo, newTab, newWindow, reloadTab } from "./actions"
+import { closeAllWindows, closeTab, goBack, goForward, navigateTo, newTab, newWindow, reloadTab, setZoom } from "./actions"
 import { urls } from "./constants"
 
 const openWebsites = Object.entries(urls).map(([key, value]) => {
@@ -68,6 +68,11 @@ export const options = [
         label: "Update: Go Forward",
         keywords: ["forwward", "nextpage", "next page", "nexti", "seuraava", "goto", "following page"],
         action: goForward,
+    },
+    {
+        label: "Update: Zoom In x2",
+        keywords: ["zoom to 100", "zooming", "zoom out", "zooom"],
+        action: setZoom.bind(this, "2"),
     },
     // The following are not working, but would be great to make them working.
     // { label: "Update: Mute Tab", action: muteTab },
