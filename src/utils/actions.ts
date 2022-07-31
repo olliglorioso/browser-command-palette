@@ -10,24 +10,14 @@ export const newWindow = (url?: string) => {
     window.open(url || urls.Google, "_blank", "location=yes,height=570,width=520,scrollbars=yes,status=yes")
 }
 
-export const reloadTab = async () => {
-    const tab = await getCurrentTab()
-    chrome.tabs.reload(tab.id as number)
-}
+export const reloadTab = async () => await chrome.tabs.reload()
+export const goBack = async () => await chrome.tabs.goBack()
+export const goForward = async () => await chrome.tabs.goForward()
+export const navigateTo = async (_url?: string) => await chrome.tabs.update({ url: _url })
 
 export const closeTab = async () => {
     const tab = await getCurrentTab()
     chrome.tabs.remove(tab.id as number)
-}
-
-export const goBack = async () => {
-    const tab = await getCurrentTab()
-    chrome.tabs.goBack(tab.id as number)
-}
-
-export const goForward = async () => {
-    const tab = await getCurrentTab()
-    chrome.tabs.goForward(tab.id as number)
 }
 
 export const closeAllWindows = async () => {
@@ -35,10 +25,6 @@ export const closeAllWindows = async () => {
     for (let i = 0; i < windows.length; i++) {
         chrome.windows.remove(windows[i].id as number)
     }
-}
-
-export const navigateTo = async (_url?: string) => {
-    await chrome.tabs.update({ url: _url })
 }
 
 export const getCpuAmount = async (): Promise<string> => {
@@ -54,8 +40,7 @@ export const getDisplayName = async (): Promise<string> => {
 }
 
 export const setZoom = async (factor?: string) => {
-    let f = 0
-    if (factor) f = parseFloat(factor)
+    const f = factor ? parseFloat(factor) : 0
     chrome.tabs.setZoom(f)
 }
 

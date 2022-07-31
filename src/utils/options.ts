@@ -70,9 +70,19 @@ export const options = [
         action: goForward,
     },
     {
-        label: "Update: Zoom In x2",
-        keywords: ["zoom to 100", "zooming", "zoom out", "zooom"],
+        label: "Update: Set Zoom To x2",
+        keywords: ["zoom in", "100%", "zooming", "zoom out", "zooom"],
         action: setZoom.bind(this, "2"),
+    },
+    {
+        label: "Update: Set Zoom To Default",
+        keywords: ["zoom out", "200%", "%", "zoom in", "zooom"],
+        action: setZoom.bind(this, "0"),
+    },
+    {
+        label: "Update: Set Zoom To x0.5",
+        keywords: ["zoom in", "100%", "50%", "zooming", "zoom out", "zooom"],
+        action: setZoom.bind(this, "0.5"),
     },
     // The following are not working, but would be great to make them working.
     // { label: "Update: Mute Tab", action: muteTab },
