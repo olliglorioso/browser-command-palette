@@ -3,6 +3,7 @@
 ## Download
 
 [https://www.comingsoon.com](https://www.google.com)
+Edit: I don't know if this is going to ever be in public use (costs me 5€ and I am a miser)
 
 ## About
 
